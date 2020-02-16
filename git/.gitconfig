@@ -1,0 +1,9 @@
+[user]
+	email = diogo2fex@gmail.com
+	name = Diogo Felix
+[alias]
+	ll = log --oneline --decorate --graph --pretty=format:'%C(yellow)%h%C(reset) - %an [%C(green)%ar%C(reset)] %s'
+
+[core]
+	excludesfile = /home/onlurking/.gitignore.global
+

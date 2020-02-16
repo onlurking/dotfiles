@@ -1,0 +1,15 @@
+rofi.color-window: #2d2d2d, #2d2d2d, #2d2d2d
+rofi.color-normal: #2d2d2d, #949494, #2d2d2d, #3b3939, #949494
+rofi.color-urgent: #fdf6e3, #dc322f, #eee8d5, #dc322f, #fdf6e3
+rofi.color-active: #2d2d2d, #458588, #2d2d2d, #1c1c1c, #6c9d9f
+rofi.width: 100
+rofi.lines: 20
+rofi.opacity: 75
+rofi.columns: 3
+rofi.font: Droid Sans 13
+rofi.bw: 0
+rofi.padding: 300
+rofi.eh: 1
+rofi.separator-style: none
+rofi.hide-scrollbar: true
+
