@@ -21,4 +21,3 @@ function! BuildComposer(info)
     endif
   endif
 endfunction
-
