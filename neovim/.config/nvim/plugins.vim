@@ -21,47 +21,47 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.local/share/nvim/plugged')
-	" Syntax highlighting
-	Plug 'sheerun/vim-polyglot'
+  " Syntax highlighting
+  Plug 'sheerun/vim-polyglot'
 
   Plug 'takac/vim-hardtime'
 
   Plug 'liuchengxu/vim-which-key'
 
-	" Motion and Objects
-	Plug 'justinmk/vim-sneak'
-	Plug 'tpope/vim-surround'
-	Plug 'tpope/vim-repeat'
-	Plug 'scrooloose/nerdcommenter'
-	Plug 'tpope/vim-rsi'
-	Plug 'terryma/vim-expand-region'
-	Plug 'andymass/vim-matchup'
+  " Motion and Objects
+  Plug 'justinmk/vim-sneak'
+  Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-repeat'
+  Plug 'scrooloose/nerdcommenter'
+  Plug 'tpope/vim-rsi'
+  Plug 'terryma/vim-expand-region'
+  Plug 'andymass/vim-matchup'
 
-	" Snippets
-	Plug 'honza/vim-snippets'
-	Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
+  " Snippets
+  Plug 'honza/vim-snippets'
+  Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
 
-	" Project setup
-	Plug 'airblade/vim-rooter'
-	Plug 'tpope/vim-vinegar'
+  " Project setup
+  Plug 'airblade/vim-rooter'
+  Plug 'tpope/vim-vinegar'
   Plug 'editorconfig/editorconfig-vim'
   Plug 'tpope/vim-fugitive'
-	Plug 'junegunn/gv.vim'
-	Plug 'airblade/vim-gitgutter'
-	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './ --all' }
-	Plug 'junegunn/fzf.vim'
-	" Plug 'ludovicchabant/vim-gutentags'
+  Plug 'junegunn/gv.vim'
+  Plug 'airblade/vim-gitgutter'
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './ --all' }
+  Plug 'junegunn/fzf.vim'
+  " Plug 'ludovicchabant/vim-gutentags'
 
-	" Writing
-	Plug 'ntpeters/vim-better-whitespace'
-	Plug 'junegunn/limelight.vim'
-	Plug 'junegunn/goyo.vim'
-	Plug 'reedes/vim-pencil'
-	Plug 'dhruvasagar/vim-table-mode'
+  " Writing
+  Plug 'ntpeters/vim-better-whitespace'
+  Plug 'junegunn/limelight.vim'
+  Plug 'junegunn/goyo.vim'
+  Plug 'reedes/vim-pencil'
+  Plug 'dhruvasagar/vim-table-mode'
 
-	" Notekeeping
-	Plug 'alok/notational-fzf-vim'
-	Plug 'vimwiki/vimwiki'
+  " Notekeeping
+  Plug 'alok/notational-fzf-vim'
+  Plug 'vimwiki/vimwiki'
 
   if !IsTermux()
     Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
