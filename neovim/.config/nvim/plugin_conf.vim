@@ -57,24 +57,38 @@ let g:coc_global_extensions = [
 let g:hardtime_default_on = 1
 
 " Goyo configuration
-function! GoyoBefore()
-  Limelight
+"
+" Remove artifacts for Neovim on true colors transparent background.
+function! s:goyo_enter()
+  if executable('tmux') && strlen($TMUX)
+    silent !tmux set status off
+    silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+  endif
+
+  hi! VertSplit gui=NONE guifg=bg guibg=NONE
+  hi! StatusLine gui=NONE guifg=bg guibg=NONE
+  hi! StatusLineNC gui=NONE guifg=bg guibg=NONE
+  hi! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
+  set wrap
+	Limelight0.3
 endfunction
 
-function! GoyoAfter()
+function! s:goyo_leave()
+  if executable('tmux') && strlen($TMUX)
+    silent !tmux set status on
+    silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+  endif
+
+  hi! VertSplit gui=NONE guifg=bg guibg=NONE
+  hi! StatusLine gui=NONE guifg=bg guibg=NONE
+  hi! StatusLineNC gui=NONE guifg=bg guibg=NONE
+  hi! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
+  set wrap
   Limelight!
-  hi Normal ctermbg=NONE guibg=NONE
 endfunction
 
-let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
-
-let g:goyo_width = 120
-
-" Color name (:help cterm-colors) or ANSI code
-let g:limelight_conceal_ctermfg = 'NONE'
-let g:limelight_conceal_guifg = 'NONE'
-let g:limelight_default_coefficient = 0.3
-autocmd InsertLeave * :Limelight!
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 augroup pencil
   autocmd!
