@@ -6,8 +6,6 @@
 " │ gitHub.com/onlurking/dotfiles  │
 " ╰────────────────────────────────╯
 
-map <silent><F2> :Goyo<CR>
-
 " Use <c-space> for trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
@@ -30,3 +28,16 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Use K for show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+nnoremap <leader>c :e ~/.config/nvim/init.vim<CR>
+nnoremap <leader>g :Goyo<CR>
+
+nnoremap <leader>s :w<CR>
+nnoremap <leader>r :source ~/.config/nvim/init.vim<CR>
+
+nnoremap <leader>u :GundoToggle<CR>
+
+nnoremap <leader><leader>g :GV<CR>
+
+nnoremap Q @@
+
