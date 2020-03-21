@@ -50,6 +50,9 @@ let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu S
 let g:Lf_PreviewInPopup = 1
 let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
 
+" vim-rooter Change to file's directory
+let g:rooter_change_directory_for_non_project_files = 'current'
+
 " Enable label mode in sneak (justinmk/vim-sneak)
 let g:sneak#label = 1
 
@@ -58,14 +61,26 @@ let g:coc_status_error_sign = '•'
 let g:coc_status_warning_sign = '•'
 
 let g:coc_global_extensions = [
-	\ 'coc-json', 'coc-yaml', 'coc-lists', 'coc-svg',
-	\ 'coc-pyls', 'coc-vetur', 'coc-vimlsp',
-	\ 'coc-tsserver', 'coc-html', 'coc-css', 'coc-pairs', 'coc-prettier',
-	\ 'coc-highlight', 'coc-snippets', 'coc-emmet'
+	\ 'coc-css',
+	\ 'coc-highlight',
+	\	'coc-html',
+	\ 'coc-emmet',
+	\ 'coc-json',
+	\ 'coc-lists',
+	\ 'coc-project',
+	\ 'coc-pairs',
+	\ 'coc-prettier',
+	\ 'coc-tabnine',
+	\ 'coc-pyls',
+	\ 'coc-snippets',
+	\ 'coc-svg',
+	\ 'coc-tsserver',
+	\ 'coc-vetur',
+	\ 'coc-vimlsp',
+	\ 'coc-yaml',
 \ ]
 
-" Enable hardtime
-let g:hardtime_default_on = 1
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 " Goyo configuration
 "
@@ -111,7 +126,9 @@ autocmd FileType vue syntax sync fromstart
 
 nnoremap <silent> <leader> :WhichKey ','<CR>
 
-" Default fzf layout
-" - down / up / left / right
-let g:fzf_layout = { 'down': '~40%' }
+augroup qs_colors
+  autocmd!
+  autocmd ColorScheme * highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
+  autocmd ColorScheme * highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
+augroup END
 
