@@ -9,6 +9,6 @@ eval "$(lua /home/onlurking/Documents/z.lua/z.lua --init zsh)"
 source $ZSH/oh-my-zsh.sh
 source $HOME/.profile
 
- autoload -Uz compinit && compinit -i
+autoload -Uz compinit && compinit -i
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
