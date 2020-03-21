@@ -6,7 +6,9 @@ export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 export PATH=$PATH:$HOME/.npm-packages/bin
 export PATH=$PATH:$HOME/.gem/ruby/2.7.0/bin
 
-export TERM="xterm-256color"
+export GOPATH=$HOME/.go
+export PATH=$PATH:$HOME/.go/bin
+
 export NVIM_GTK_PREFER_DARK_THEME=1
 export NVIM_GTK_NO_HEADERBAR=1
 export NVIM_GTK_NO_WINDOW_DECORATION=1
