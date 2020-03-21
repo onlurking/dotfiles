@@ -19,3 +19,5 @@ export NVIM_GTK_NO_WINDOW_DECORATION=1
 alias t=tmux
 alias g=git
 alias n=nvim
+
+export PATH="$HOME/.poetry/bin:$PATH"
