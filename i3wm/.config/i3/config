@@ -196,3 +196,6 @@ exec --no-startup-id compton
 exec --no-startup-id nm-applet
 exec --no-startup-id setxkbmap -model abnt2 -layout br -variant abnt2
 exec --no-startup-id xinput set-prop $(xinput list | grep "Touchpad" | sed 's/.*id=\([0-9]*\).*/\1/') 'libinput Tapping Enabled' 1
+
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show, move position 80px 50px; resize set 1200 650
