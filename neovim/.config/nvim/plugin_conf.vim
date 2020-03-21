@@ -7,11 +7,22 @@
 " ╰────────────────────────────────╯
 
 " Notational Velocity (alok/notational-fzf-vim)
-let g:nv_search_paths = ['~/.notes', '~/.wiki']
+let g:nv_search_paths = ['~/.notes', '~/.wiki', '~/.cheat']
 let g:nv_default_extension = '.md'
 
 " Vimwiki (vimwiki/vimwiki)
-let g:vimwiki_list = [{'path': '~/.wiki/', 'syntax': 'markdown', 'ext': '.md'}, {'path': '~/.notes/', 'syntax': 'markdown', 'ext': '.md'} ]
+let g:vimwiki_list = [
+	\ { 'path': '~/.wiki/', 'syntax': 'markdown', 'ext': '.md' },
+	\ { 'path': '~/.notes/', 'syntax': 'markdown', 'ext': '.md' }
+\ ]
+
+let g:vimwiki_key_mappings = {
+  \ 'headers': 0,
+\ }
+
+" markdown-composer
+let g:instant_markdown_mathjax = 1
+let g:instant_markdown_autoscroll = 1
 
 " Automatically generate Diary Links
 command! Diary VimwikiDiaryIndex
@@ -98,11 +109,7 @@ augroup END
 " Fix vetur syntax highlight
 autocmd FileType vue syntax sync fromstart
 
-
-let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit' }
+nnoremap <silent> <leader> :WhichKey ','<CR>
 
 " Default fzf layout
 " - down / up / left / right
