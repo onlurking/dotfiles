@@ -195,4 +195,4 @@ exec --no-startup-id unclutter
 exec --no-startup-id compton
 exec --no-startup-id nm-applet
 exec --no-startup-id setxkbmap -model abnt2 -layout br -variant abnt2
-exec --no-startup-id xinput set-prop 12 'libinput Tapping Enabled' 1
+exec --no-startup-id xinput set-prop $(xinput list | grep "Touchpad" | sed 's/.*id=\([0-9]*\).*/\1/') 'libinput Tapping Enabled' 1
