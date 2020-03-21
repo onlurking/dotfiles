@@ -15,6 +15,10 @@ endif
 
 " Download Vim Plug if not present
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
+ if !executable("curl")
+        echoerr "You have to install curl or first install vim-plug yourself!"
+        execute "q!"
+    endif
   silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
@@ -23,16 +27,31 @@ endif
 call plug#begin('~/.local/share/nvim/plugged')
 	" Syntax highlighting
 	Plug 'sheerun/vim-polyglot'
-
-  Plug 'takac/vim-hardtime'
-
   Plug 'liuchengxu/vim-which-key'
+
+	Plug 'yggdroot/leaderf'
+
+	" Viewer for Symbols and Ctags
+	Plug 'liuchengxu/vista.vim'
+
+  Plug 'markonm/traces.vim'
+
+	" Rainbow Parentheses Improved
+	Plug 'luochen1990/rainbow'
+
+	" Auto resize
+	Plug 'camspiers/animate.vim'
+	Plug 'camspiers/lens.vim'
+
+	" Linting support
+	Plug 'w0rp/ale'
 
 	" Motion and Objects
 	Plug 'justinmk/vim-sneak'
+	Plug 'unblevable/quick-scope'
 	Plug 'tpope/vim-surround'
 	Plug 'tpope/vim-repeat'
-	Plug 'scrooloose/nerdcommenter'
+	Plug 'tomtom/tcomment_vim' "Easy comment blocks with <Leader>cc.
 	Plug 'tpope/vim-rsi'
 	Plug 'terryma/vim-expand-region'
 	Plug 'andymass/vim-matchup'
@@ -45,12 +64,13 @@ call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'airblade/vim-rooter'
 	Plug 'tpope/vim-vinegar'
   Plug 'editorconfig/editorconfig-vim'
-  Plug 'tpope/vim-fugitive'
-	Plug 'junegunn/gv.vim'
-	Plug 'airblade/vim-gitgutter'
+  Plug 'tpope/vim-fugitive' "Better Git support.
+	Plug 'junegunn/gv.vim' "Git commit browser.
+	Plug 'airblade/vim-gitgutter' "Display git diff gutter.
 	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './ --all' }
 	Plug 'junegunn/fzf.vim'
-	" Plug 'ludovicchabant/vim-gutentags'
+	Plug 'ludovicchabant/vim-gutentags'
+	Plug 'sjl/gundo.vim' "Intelligent undo tree.
 
 	" Writing
 	Plug 'ntpeters/vim-better-whitespace'
