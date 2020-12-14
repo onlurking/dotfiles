@@ -31,6 +31,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 	Plug 'yggdroot/leaderf'
 
+  Plug 'mhinz/vim-startify'
+
 	" Viewer for Symbols and Ctags
 	Plug 'liuchengxu/vista.vim'
 
@@ -58,7 +60,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 	" Snippets
 	Plug 'honza/vim-snippets'
-	Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 	" Project setup
 	Plug 'airblade/vim-rooter'
@@ -69,7 +71,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'airblade/vim-gitgutter' "Display git diff gutter.
 	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './ --all' }
 	Plug 'junegunn/fzf.vim'
-	Plug 'ludovicchabant/vim-gutentags'
 	Plug 'sjl/gundo.vim' "Intelligent undo tree.
 
 	" Writing

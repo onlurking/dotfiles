@@ -42,6 +42,7 @@ set pages-per-row 1
 set scroll-page-aware "true"
 set scroll-full-overlap 0.01
 set scroll-step 100
+set smooth-scroll "true"
 
 #zoom settings
 set zoom-min 10
@@ -50,3 +51,7 @@ set font "inconsolata 15"
 
 set render-loading "false"
 set scroll-step 50
+
+map <F1> feedkeys ":set default-bg \#ffffff<Return>"
+map <F2> feedkeys ":set default-bg \#2d2d2d<Return>"
+

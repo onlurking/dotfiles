@@ -13,7 +13,7 @@ let g:nv_default_extension = '.md'
 " Vimwiki (vimwiki/vimwiki)
 let g:vimwiki_list = [
 	\ { 'path': '~/.wiki/', 'syntax': 'markdown', 'ext': '.md' },
-	\ { 'path': '~/.notes/', 'syntax': 'markdown', 'ext': '.md' }
+	\ { 'path': '~/.notes/', 'syntax': 'markdown', 'ext': '.md' },
 \ ]
 
 let g:vimwiki_key_mappings = {

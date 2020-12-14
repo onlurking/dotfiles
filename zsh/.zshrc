@@ -2,7 +2,7 @@ export ZSH="/home/onlurking/.oh-my-zsh"
 
 ZSH_THEME="lambda-mod"
 
-plugins=(git fast-syntax-highlighting zsh-autosuggestions docker)
+plugins=(git fast-syntax-highlighting zsh-autosuggestions docker colored-man-pages)
 
 eval "$(lua /home/onlurking/Documents/z.lua/z.lua --init zsh)"
 

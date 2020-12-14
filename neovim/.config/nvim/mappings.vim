@@ -34,10 +34,14 @@ nnoremap <leader>g :Goyo<CR>
 
 nnoremap <leader>s :w<CR>
 nnoremap <leader>r :source ~/.config/nvim/init.vim<CR>
+nnoremap <leader>t :%!fold -s -w 80 <CR>
 
 nnoremap <leader>u :GundoToggle<CR>
 
 nnoremap <leader><leader>g :GV<CR>
 
 nnoremap Q @@
+
+nnoremap j gj
+nnoremap k gk
 

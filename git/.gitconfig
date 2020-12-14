@@ -3,6 +3,11 @@
 	name = Diogo Felix
 [alias]
 	ll = log --oneline --decorate --graph --pretty=format:'%C(yellow)%h%C(reset) - %an [%C(green)%ar%C(reset)] %s'
-
+	next = !git checkout `git rev-list HEAD..demo-end | tail -1`
+	prev = checkout HEAD^
+  s = !git status -s
+  c = !git add --all && git commit -m
+[push]
+  followTags = true
 [core]
 	excludesfile = /home/onlurking/.gitignore.global
