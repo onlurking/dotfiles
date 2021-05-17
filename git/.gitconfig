@@ -1,13 +1,122 @@
 [user]
 	email = diogo2fex@gmail.com
 	name = Diogo Felix
-[alias]
-	ll = log --oneline --decorate --graph --pretty=format:'%C(yellow)%h%C(reset) - %an [%C(green)%ar%C(reset)] %s'
-	next = !git checkout `git rev-list HEAD..demo-end | tail -1`
-	prev = checkout HEAD^
-  s = !git status -s
-  c = !git add --all && git commit -m
-[push]
-  followTags = true
+[init]
+	defaultBranch = main
 [core]
-	excludesfile = /home/onlurking/.gitignore.global
+	autocrlf = input
+	safecrlf = warn
+	editor = $EDITOR
+	# this file is symbolic linked to ./global_gitignore by `../Makefile`
+	excludesfile = ~/.global_gitignore
+[alias]
+	#
+	# functions
+	#
+	revert-menu = "!revertMenu() {\
+		file='/tmp/revert-menu' \
+		&& echo '# lines prepended with an \"k\" are keept while with an \"r\" are reverted' >$file \
+		&& git log --oneline --max-count=20 --format=format:'%h %s' | sed -e 's/^/k /' >>$file \
+		&& $EDITOR $file +':setfiletype RevertMenu' \
+		&& sed -e '/^#/d' -e '/^k/d' -e 's/r \\(\\w\\+\\).*/\\1/' -in $file \
+		&& xargs -I{} git revert {} <$file;\
+		}; revertMenu"
+	master-update = "!gitmup() {\
+		git checkout ${1:-$(git config --get init.defaultBranch)} \
+		&& git pull; \
+		git checkout -;\
+		}; gitmup"
+	prefix-it = "!gitsuffixit() { \
+		[ $1 ] \
+		&& git branch -m \"$1-$(git branch --show-current)\" \
+		|| echo 'needs a suffix to append to branch name' && return 1;\
+		}; gitsuffixit"
+	suffix-it = "!gitsuffixit() { \
+		[ $1 ] \
+		&& git branch -m \"$(git branch --show-current)-$1\" \
+		|| echo 'needs a suffix to append to branch name' && return 1;\
+		}; gitsuffixit"
+	clear-local-branches = "!clb() { \
+		echo Executing 'it remote prune origin' \
+		&& git remote prune origin \
+		&& echo Finding merged branchs \
+		&& echo '# Remove from the buffer the branches you want to keep' >/tmp/merged-branches \
+		&& git branch --merged | grep \"master\\|next-release\\|$(git rev-parse --abbrev-ref HEAD)\" -v >>/tmp/merged-branches \
+		&& $EDITOR /tmp/merged-branches +':setfiletype ClearLocalBranches' \
+		&& sed -ine '/^#/d' /tmp/merged-branches \
+		&& xargs git branch -d </tmp/merged-branches;\
+		}; clb"
+	pull-preview = "!gitpullpreview() { \
+		echo Fetching new changes... \
+		&& git fetch --prune \
+		&& git log -p ...@{u};\
+		}; gitpullpreview"
+	pull-diff = "!gitpulldiff() { \
+		echo Fetching new changes... \
+		&& git fetch --prune \
+		&& git diff ...@{u};\
+		}; gitpulldiff"
+	branch-rename = "!branchrename() { \
+		git branch --show-current >/tmp/new-branch-name;\
+		$EDITOR /tmp/new-branch-name;\
+		</tmp/new-branch-name xargs -I{} git branch -m {};\
+		}; branchrename"
+	#
+	# shorthands
+	#
+	mup = master-update
+	pre = prefix-it
+	suf = suffix-it
+	clb = clear-local-branches
+	pp = pull-preview
+	pd = pull-diff
+	#
+	# general
+	#
+	g = "!gitagain() { git \"$@\"; }; gitagain"
+	ad = add -p
+	ada = add -A
+	adog = log --all --decorate --oneline --graph
+	ch = checkout
+	co = commit
+	cp = cherry-pick
+	d = diff
+	ds = diff --staged
+	dw = diff --color-words='[^[:space:]]|([[:alnum:]]|UTF_8_GUARD)+'
+	f = fetch -p
+	fix = "!nvim `git diff --name-only --diff-filter=U`"
+	fuck = commit --amend
+	hist = log --graph --decorate --pretty=oneline --abbrev-commit --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
+	lop = log --decorate --pretty=oneline --abbrev-commit --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
+	elog = "!git log | gitmoji-log | bat --plain"
+	pow = push origin HEAD -u
+	powf = push origin HEAD -u --force-with-lease
+	s = status
+	wp = rebase --continue
+	back = checkout HEAD~
+	next = "!git checkout $(git rev-list --topo-order HEAD..master | tail -1)"
+	c = "!gitmoji -c"
+	rb = reset --hard @{u}
+[push]
+	default = simple
+[credetial]
+	helper=store
+[rerere]
+	enabled = true
+[pull]
+	ff = only
+[init]
+	defaultBrnch = main
+[diff]
+	tool = bc3
+[difftool]
+	prompt = false
+[difftool "bc3"]
+	path = /usr/bin/bcompare
+	trustExitCode = true
+[merge]
+	tool = bc3
+[mergetool "bcompare"]
+	trustExitCode = true
+[mergetool "bc3"]
+	trustExitCode = true

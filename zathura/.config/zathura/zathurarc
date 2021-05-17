@@ -55,3 +55,4 @@ set scroll-step 50
 map <F1> feedkeys ":set default-bg \#ffffff<Return>"
 map <F2> feedkeys ":set default-bg \#2d2d2d<Return>"
 
+
